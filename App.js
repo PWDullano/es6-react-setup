@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 //JavaScript
 // class App extends React.Component {
@@ -18,17 +19,40 @@ import React from 'react';
 // const App = () => <h1>Herro Everybody</h1>
 
 //The Render method only returns one node back unless you wrap it in a <div>
+// class App extends React.Component {
+//   render(){
+//     return (
+//       <div>
+//         <h1>Hello Herro</h1>
+//         <i>Italic</i>
+//         <br></br>
+//         <b>BOLD</b>
+//       </div>
+//     );
+//   }
+// }
+
+// Rendering txt to view using interpolation
 class App extends React.Component {
   render(){
-    return (
-      <div>
-        <h1>Hello Herro</h1>
-        <i>Italic</i>
-        <br></br>
-        <b>BOLD</b>
-      </div>
-    );
+    let txt = this.props.txt
+    return <h1>{txt}</h1>
   }
 }
+
+App.propTypes = {
+  txt: React.PropTypes.string,
+  dog: React.PropTypes.number.isRequired
+}
+
+App.defaultProps={
+  txt: 'This is the default text'
+}
+
+//React Props or Properties
+ReactDOM.render(
+  <App dog={2} />,
+  document.getElementById('app')
+)
 
 export default App
